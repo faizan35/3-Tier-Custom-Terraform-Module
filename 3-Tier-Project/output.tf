@@ -11,6 +11,11 @@ output "private_subnet_id" {
   value = module.vpc.private_subnet_id
 }
 
+
+output "private_subnet_id-2" {
+  value = module.vpc.private_subnet_id-2
+}
+
 output "internet_gateway" {
   value = module.vpc.internet_gateway_id
 }

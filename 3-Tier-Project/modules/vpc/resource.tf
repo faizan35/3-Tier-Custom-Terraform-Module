@@ -31,6 +31,19 @@ resource "aws_subnet" "private-hulk-subnet" {
   }
 }
 
+resource "aws_subnet" "private-hulk-subnet-2" {
+  vpc_id     = aws_vpc.hulk-vpc.id
+  cidr_block = var.private_cidr_vpc-2
+
+  availability_zone = data.aws_availability_zones.available.names[0]
+
+  tags = {
+    Name = "Hulk-Pri-Subnet-2"
+  }
+}
+
+
+
 
 resource "aws_internet_gateway" "igw" {
   vpc_id = aws_vpc.hulk-vpc.id
@@ -74,6 +87,6 @@ resource "aws_route_table" "pri-rt" {
 
 resource "aws_route_table_association" "pri-rta" {
   subnet_id      = aws_subnet.private-hulk-subnet.id
-  route_table_id = aws_route_table.pub-rt.id
+  route_table_id = aws_route_table.pri-rt.id
 }
 
