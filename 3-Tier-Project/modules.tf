@@ -29,4 +29,8 @@ module "app_lb" {
   tar-id-instance-alb = module.ec2-instance.instance-ID
 }
 
-
+module "rds" {
+  source = "./modules/rds"
+  vpc_sg_ID_rds = module.sg.SG_ID
+  subnet_private_rds = module.vpc.private_subnet_id
+}

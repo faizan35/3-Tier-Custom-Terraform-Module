@@ -1,6 +1,6 @@
 # app-lb
 resource "aws_lb" "app_lb" {
-  name               = "test-lb-tf"
+  name               = "hulk-app-lb"
   internal           = false
   load_balancer_type = "application"
   security_groups    = [ var.Sg_ID ]
