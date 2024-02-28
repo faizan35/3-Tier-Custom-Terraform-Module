@@ -10,7 +10,7 @@ resource "aws_instance" "web" {
 
   associate_public_ip_address = true
 
-  user_data = file("${module.ec2-instance}/script.sh")
+  user_data = file("${path.module}/script.sh")
 
   tags = {
     Name = "Hulk-Instance"
