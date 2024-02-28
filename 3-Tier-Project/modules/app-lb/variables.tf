@@ -5,7 +5,7 @@ variable "Sg_ID" {
 
 variable "Subnet_ID" {
   description = "subnet ID for app lb"
-  type = string
+  type = list(string)
 }
 
 

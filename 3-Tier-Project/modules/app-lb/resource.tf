@@ -4,7 +4,7 @@ resource "aws_lb" "app_lb" {
   internal           = false
   load_balancer_type = "application"
   security_groups    = [ var.Sg_ID ]
-  subnets            = [ var.Subnet_ID ]
+  subnets            = [ var.Subnet_ID[0], var.Subnet_ID[1] ]
 
   tags = {
     Name = "hulk-app_lb"
