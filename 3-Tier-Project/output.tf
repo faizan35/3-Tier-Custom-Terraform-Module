@@ -23,3 +23,9 @@ output "internet_gateway" {
 output "SG_ID" {
   value = module.sg.SG_ID
 }
+
+
+############## EC2 ############
+output "instance-ID" {
+  value = module.ec2-instance.instance-ID
+}

@@ -20,3 +20,13 @@ module "ec2-instance" {
   SG_ID = module.sg.SG_ID
   Subnet_ID = module.vpc.public_subnet_id
 }
+
+module "app_lb" {
+  source = "./modules/app-lb"
+  Sg_ID = module.sg.SG_ID
+  Subnet_ID = module.vpc.public_subnet_id
+  VPC_ID = module.vpc.vpc_id
+  tar-id-instance-alb = [ module.ec2-instance.instance-ID ]
+}
+
+
