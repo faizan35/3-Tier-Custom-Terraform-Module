@@ -3,7 +3,6 @@ module "vpc" {
   cidr_vpc = var.cidr_vpc
   public_cidr_vpc = var.public_cidr_vpc
   private_cidr_vpc = var.private_cidr_vpc
-  private_cidr_vpc-2 = var.private_cidr_vpc-2
 }
 
 
@@ -34,5 +33,4 @@ module "rds" {
   source = "./modules/rds"
   vpc_sg_ID_rds = module.sg.SG_ID
   subnet_private_rds = module.vpc.private_subnet_id
-  subnet_private_rds-2 = module.vpc.private_subnet_id-2
 }
