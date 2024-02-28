@@ -1,79 +1,45 @@
-resource "aws_vpc" "hulk-vpc" {
-  cidr_block       = var.cidr_vpc
-  instance_tenancy = "default"
+resource "aws_security_group" "sg" {
+  name        = "hulk-sg"
+  description = "Allow TLS inbound traffic and all outbound traffic"
+  vpc_id      = var.vpc_id
 
   tags = {
-    Name = "hulk-VPC"
+    Name = "Hulk-SG"
   }
 }
 
-resource "aws_subnet" "public-hulk-subnet" {
-  vpc_id     = aws_vpc.hulk-vpc.id
-  cidr_block = var.public_cidr_vpc
-
-  map_public_ip_on_launch = true
-
-  availability_zone = data.aws_availability_zones.available.names[0]
-
-  tags = {
-    Name = "Hulk-Pub-Subnet"
-  }
+# Inbound traffic
+resource "aws_vpc_security_group_ingress_rule" "allow_https_ipv4" {
+  security_group_id = aws_security_group.sg.id
+  description       = "HTTPS"
+  cidr_ipv4         = "0.0.0.0/0"
+  from_port         = 443
+  ip_protocol       = "tcp"
+  to_port           = 443
 }
 
-resource "aws_subnet" "private-hulk-subnet" {
-  vpc_id     = aws_vpc.hulk-vpc.id
-  cidr_block = var.private_cidr_vpc
-
-  availability_zone = data.aws_availability_zones.available.names[1]
-
-  tags = {
-    Name = "Hulk-Pri-Subnet"
-  }
+resource "aws_vpc_security_group_ingress_rule" "allow_http_ipv4" {
+  security_group_id = aws_security_group.sg.id
+  description       = "HTTP"
+  cidr_ipv4         = "0.0.0.0/0"
+  from_port         = 80
+  ip_protocol       = "tcp"
+  to_port           = 80
 }
 
 
-resource "aws_internet_gateway" "igw" {
-  vpc_id = aws_vpc.hulk-vpc.id
-
-  tags = {
-    Name = "hullk-IGW"
-  }
+resource "aws_vpc_security_group_ingress_rule" "allow_ssh_ipv4" {
+  security_group_id = aws_security_group.sg.id
+  description       = "SSH"
+  cidr_ipv4         = "0.0.0.0/0"
+  from_port         = 22
+  ip_protocol       = "tcp"
+  to_port           = 22
 }
 
-
-# Route table for Public
-
-resource "aws_route_table" "pub-rt" {
-  vpc_id = aws_vpc.hulk-vpc.id
-
-  route {
-    cidr_block = "0.0.0.0/0"
-    gateway_id = aws_internet_gateway.igw.id
-  }
-
-  tags = {
-    Name = "Public RT"
-  }
-}
-
-resource "aws_route_table_association" "pub-rta" {
-  subnet_id      = aws_subnet.public-hulk-subnet.id
-  route_table_id = aws_route_table.pub-rt.id
-}
-
-
-
-# Route table for Private
-
-resource "aws_route_table" "pri-rt" {
-  vpc_id = aws_vpc.hulk-vpc.id
-
-  tags = {
-    Name = "Public RT"
-  }
-}
-
-resource "aws_route_table_association" "pri-rta" {
-  subnet_id      = aws_subnet.private-hulk-subnet.id
-  route_table_id = aws_route_table.pub-rt.id
+# Outbound traffic
+resource "aws_vpc_security_group_egress_rule" "allow_all_traffic_ipv4" {
+  security_group_id = aws_security_group.sg.id
+  cidr_ipv4         = "0.0.0.0/0"
+  ip_protocol       = "-1" # semantically equivalent to all ports
 }

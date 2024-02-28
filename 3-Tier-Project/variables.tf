@@ -13,3 +13,8 @@ variable "private_cidr_vpc" {
   description = "Private CIDR for VPC."
   type = string
 }
+
+variable "vpc_id" {
+  description = "VPC ID for SG"
+  type = string
+}
