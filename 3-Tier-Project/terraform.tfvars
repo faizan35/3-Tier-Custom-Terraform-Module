@@ -9,7 +9,7 @@ private_cidr_vpc-2 = "20.0.3.0/24"
 
 ami = "ami-0ce2cb35386fc22e9"
 instance_type = "t2.micro"
-count_of_instance = 1
+count_of_instance = 2
 
 
 ####### RDS #########
