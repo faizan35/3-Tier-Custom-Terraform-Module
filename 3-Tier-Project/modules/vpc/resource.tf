@@ -63,20 +63,20 @@ resource "aws_route_table_association" "pub-rta" {
 
 ######################################
 
-# resource "aws_eip" "lb" {
-#   domain   = "vpc"
-# }
+resource "aws_eip" "lb" {
+  domain   = "vpc"
+}
 
-# resource "aws_nat_gateway" "example" {
-#   allocation_id = aws_eip.lb.id
-#   subnet_id     = aws_subnet.private-hulk-subnet.id
+resource "aws_nat_gateway" "nat-gw" {
+  allocation_id = aws_eip.lb.id
+  subnet_id     = aws_subnet.private-hulk-subnet.id
 
-#   tags = {
-#     Name = "gw NAT"
-#   }
+  tags = {
+    Name = "gw NAT"
+  }
 
-#   depends_on = [aws_internet_gateway.igw]
-# }
+  depends_on = [aws_internet_gateway.igw]
+}
 
 
 ##########################################
@@ -90,7 +90,7 @@ resource "aws_route_table" "pri-rt" {
   vpc_id = aws_vpc.hulk-vpc.id
 
   tags = {
-    Name = "Public RT"
+    Name = "Private RT"
   }
 }
 
@@ -100,10 +100,10 @@ resource "aws_route_table_association" "pri-rta" {
 }
 
 ##############################################
-# resource "aws_route" "private-route" {
-#   route_table_id         = aws_route_table.pri-rt.id
-#   destination_cidr_block = "0.0.0.0/0"  # Destination CIDR block for internet-bound traffic
-#   nat_gateway_id         = aws_nat_gateway.nat_gateway.id  # ID of your NAT Gateway
-# }
+resource "aws_route" "private-route" {
+  route_table_id         = aws_route_table.pri-rt.id
+  destination_cidr_block = "0.0.0.0/0"  # Destination CIDR block for internet-bound traffic
+  nat_gateway_id         = aws_nat_gateway.nat-gw.id  # ID of your NAT Gateway
+}
 
 #################################################
