@@ -32,5 +32,5 @@ module "app_lb" {
 module "rds" {
   source = "./modules/rds"
   vpc_sg_ID_rds = module.sg.SG_ID
-  subnet_private_rds = module.vpc.private_subnet_id.names
+  subnet_private_rds = module.vpc.private_subnet_id
 }
