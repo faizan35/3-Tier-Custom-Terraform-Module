@@ -7,3 +7,9 @@ variable "subnet_private_rds" {
   description = "Private Subnet for RDS."
   type = string
 }
+
+#################
+variable "subnet_private_rds-2" {
+  description = "Private Subnet for RDS."
+  type = string
+}
