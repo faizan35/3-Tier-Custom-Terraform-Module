@@ -13,6 +13,6 @@ resource "aws_instance" "web" {
   user_data = file("${path.module}/script.sh")
 
   tags = {
-    Name = "Hulk-Instance"
+    Name = "Hulk-Instance-${count.index}"
   }
 }
