@@ -10,7 +10,7 @@ resource "aws_db_instance" "mysql" {
   skip_final_snapshot  = true
 
   vpc_security_group_ids = [ var.vpc_sg_ID_rds ]
-  # db_subnet_group_name = var.subnet_private_rds
+  db_subnet_group_name = var.subnet_private_rds
 
 
 }
