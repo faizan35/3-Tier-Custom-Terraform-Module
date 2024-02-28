@@ -26,7 +26,7 @@ module "app_lb" {
   Sg_ID = module.sg.SG_ID
   Subnet_ID = module.vpc.public_subnet_id
   VPC_ID = module.vpc.vpc_id
-  tar-id-instance-alb = [ module.ec2-instance.instance-ID ]
+  tar-id-instance-alb = module.ec2-instance.instance-ID
 }
 
 
