@@ -1,11 +1,11 @@
-# resource "aws_db_subnet_group" "default" {
-#   name       = "main"
-#   subnet_ids = [var.subnet_private_rds]
+resource "aws_db_subnet_group" "default" {
+  name       = "main"
+  subnet_ids = [var.subnet_private_rds]
 
-#   tags = {
-#     Name = "My DB subnet group"
-#   }
-# }
+  tags = {
+    Name = "My DB subnet group"
+  }
+}
 
 resource "aws_db_instance" "mysql" {
   allocated_storage    = 10
