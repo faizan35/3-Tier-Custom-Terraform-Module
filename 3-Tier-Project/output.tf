@@ -3,13 +3,13 @@ output "vpc_id" {
 }
 
 output "public_subnet_id" {
-  value = module.vpc.public-hulk-subnet.id
+  value = module.vpc.public_subnet_id
 }
 
 output "private_subnet_id" {
-  value = module.vpc.private-hulk-subnet.id
+  value = module.vpc.private_subnet_id
 }
 
 output "internet_gateway" {
-  value = module.vpc.igw.id
+  value = module.vpc.internet_gateway_id
 }

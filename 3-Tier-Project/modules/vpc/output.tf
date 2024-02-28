@@ -10,6 +10,6 @@ output "private_subnet_id" {
   value = aws_subnet.private-hulk-subnet.id
 }
 
-output "internet_gateway" {
+output "internet_gateway_id" {
   value = aws_internet_gateway.igw.id
 }
