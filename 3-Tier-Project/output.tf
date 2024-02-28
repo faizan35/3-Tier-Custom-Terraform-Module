@@ -1,3 +1,4 @@
+############# VPC ###########
 output "vpc_id" {
   value = module.vpc.vpc_id
 }
@@ -12,4 +13,13 @@ output "private_subnet_id" {
 
 output "internet_gateway" {
   value = module.vpc.internet_gateway_id
+}
+
+##################################
+
+
+############ SG #################
+
+output "SG_ID" {
+  value = module.sg.SG_ID
 }

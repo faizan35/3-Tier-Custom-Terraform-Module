@@ -14,7 +14,21 @@ variable "private_cidr_vpc" {
   type = string
 }
 
-# variable "vpc_id" {
-#   description = "VPC ID for SG"
-#   type = string
-# }
+####### EC2 ########
+
+variable "ami" {
+  description = "AMI for EC2"
+  type = string
+}
+
+variable "instance_type" {
+  description = "Type of Instance"
+  type = string
+}
+
+variable "count_of_instance" {
+  description = "number of instance"
+  type = number
+}
+
+
