@@ -36,7 +36,7 @@ resource "aws_subnet" "private-hulk-subnet-2" {
   vpc_id     = aws_vpc.hulk-vpc.id
   cidr_block = var.private_cidr_vpc-2
 
-  availability_zone = data.aws_availability_zones.available.names[2]
+  availability_zone = data.aws_availability_zones.available.names[1]
 
   tags = {
     Name = "Hulk-Pri-Subnet"
