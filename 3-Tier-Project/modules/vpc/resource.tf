@@ -39,7 +39,7 @@ resource "aws_subnet" "private-hulk-subnet-2" {
   availability_zone = data.aws_availability_zones.available.names[0]
 
   tags = {
-    Name = "Hulk-Pri-Subnet"
+    Name = "Hulk-Pri-Subnet-2"
   }
 }
 
