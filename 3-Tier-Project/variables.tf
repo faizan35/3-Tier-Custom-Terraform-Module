@@ -14,7 +14,7 @@ variable "private_cidr_vpc" {
   type = string
 }
 
-variable "vpc_id" {
-  description = "VPC ID for SG"
-  type = string
-}
+# variable "vpc_id" {
+#   description = "VPC ID for SG"
+#   type = string
+# }
