@@ -9,11 +9,11 @@ resource "aws_s3_bucket" "state-backend" {
 
 resource "aws_dynamodb_table" "backend-table" {
   name             = "hulk-state-table"
-  hash_key         = "LockingID"
+  hash_key         = "LockID"
   billing_mode     = "PAY_PER_REQUEST"
 
   attribute {
-    name = "LockingID"
+    name = "LockID"
     type = "S"
   }
 
