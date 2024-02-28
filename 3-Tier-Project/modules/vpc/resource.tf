@@ -56,7 +56,7 @@ resource "aws_route_table" "pub-rt" {
   }
 }
 
-resource "aws_route_table_association" "rta" {
+resource "aws_route_table_association" "pub-rta" {
   subnet_id      = aws_subnet.public-hulk-subnet.id
   route_table_id = aws_route_table.pub-rt.id
 }
@@ -73,7 +73,7 @@ resource "aws_route_table" "pri-rt" {
   }
 }
 
-resource "aws_route_table_association" "rta" {
+resource "aws_route_table_association" "-pri-rta" {
   subnet_id      = aws_subnet.private-hulk-subnet.id
   route_table_id = aws_route_table.pub-rt.id
 }
