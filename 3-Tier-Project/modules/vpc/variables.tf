@@ -3,6 +3,7 @@ variable "cidr_vpc" {
   type = string
 }
 
+
 variable "public_cidr_vpc" {
   description = "public CIDR for VPC."
   type = string

@@ -7,7 +7,10 @@ terraform {
   }
 
   backend "s3" {
-    bucket = "value"
+    bucket = "hulk-state-bucket"
+    key = "3-tier-project/terraform.tfstate"
+    region = "us-west-1"
+    dynamodb_table = "tarra-state-table"
   }
 }
 
