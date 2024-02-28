@@ -13,7 +13,7 @@ resource "aws_subnet" "public-hulk-subnet" {
 
   map_public_ip_on_launch = true
 
-  availability_zone = data.aws_availability_zones.available.names
+  availability_zone = data.aws_availability_zones.available.names[0]
 
   tags = {
     Name = "Hulk-Pub-Subnet"
@@ -24,7 +24,7 @@ resource "aws_subnet" "private-hulk-subnet" {
   vpc_id     = aws_vpc.hulk-vpc.id
   cidr_block = var.private_cidr_vpc
 
-  availability_zone = data.aws_availability_zones.available.names
+  availability_zone = data.aws_availability_zones.available.names[1]
 
   tags = {
     Name = "Hulk-Pri-Subnet"
