@@ -8,10 +8,9 @@ resource "aws_s3_bucket" "state-backend" {
 
 
 resource "aws_dynamodb_table" "backend-table" {
-  name             = "tarra-state-table"
+  name             = "hulk-state-table"
   hash_key         = "LockingID"
   billing_mode     = "PAY_PER_REQUEST"
-
 
   attribute {
     name = "LockingID"
@@ -21,6 +20,5 @@ resource "aws_dynamodb_table" "backend-table" {
   tags = {
     Name = "hulk-state-table"
   }
-
 
 }
