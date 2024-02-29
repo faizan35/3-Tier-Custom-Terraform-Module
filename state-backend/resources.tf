@@ -1,5 +1,6 @@
 resource "aws_s3_bucket" "state-backend" {
   bucket = "hulk-state-bucket"
+  force_destroy = true
 
   tags = {
     Name        = "hulk-state-bucket"

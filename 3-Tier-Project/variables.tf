@@ -1,3 +1,5 @@
+############ VPC ##########
+
 variable "cidr_vpc" {
   description = "CIDR for VPC."
   type = string
@@ -38,3 +40,26 @@ variable "count_of_instance" {
 }
 
 
+############# RDS ##################
+
+variable "instance_class" {
+  description = "Class Of Instance"
+  type = string
+}
+
+variable "username" {
+  description = "DB Username"
+  type = string
+}
+
+
+variable "password" {
+  description = "DB Password"
+  type = string
+}
+
+
+variable "allocated_storage" {
+  description = "DB Storage"
+  type = number
+}

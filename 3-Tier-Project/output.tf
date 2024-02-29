@@ -1,4 +1,5 @@
 ############# VPC ###########
+
 output "vpc_id" {
   value = module.vpc.vpc_id
 }
@@ -31,6 +32,7 @@ output "SG_ID" {
 
 
 ############## EC2 ############
+
 output "instance-ID" {
   value = module.ec2-instance.instance-ID
 }

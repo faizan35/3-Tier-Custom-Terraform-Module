@@ -35,4 +35,8 @@ module "rds" {
   vpc_sg_ID_rds = module.sg.SG_ID
   subnet_private_rds = module.vpc.private_subnet_id
   subnet_private_rds-2 = module.vpc.private_subnet_id-2
+  instance_class = var.instance_class
+  username = var.username
+  password = var.password
+  allocated_storage = var.allocated_storage
 }

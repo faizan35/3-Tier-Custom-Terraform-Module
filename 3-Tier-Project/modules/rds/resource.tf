@@ -9,13 +9,13 @@ resource "aws_db_subnet_group" "rds-subnet-grp" {
 
 
 resource "aws_db_instance" "mysql" {
-  allocated_storage    = 10
+  allocated_storage    = var.allocated_storage
   db_name              = "hulkdb"
   engine               = "mysql"
   engine_version       = "5.7"
-  instance_class       = "db.t2.micro"
-  username             = "root"
-  password             = "root12345"
+  instance_class       = var.instance_class
+  username             = var.username
+  password             = var.password
   parameter_group_name = "default.mysql5.7"
   skip_final_snapshot  = true
 
