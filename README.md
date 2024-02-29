@@ -1,6 +1,14 @@
-# 3-Tier-Custom-Terraform-Module
+# 3 Tier Custom Terraform AWS VPC Module
 
 This project demonstrates the deployment of a 3-tier architecture on Amazon Web Services (AWS) using Terraform modules.
+
+## Project Video
+
+###### <--- Comming Soon --->
+
+## Architectural Diagram
+
+<img src="./architectural-dia.png" width="70%" style="display: block; margin: 0 auto;">
 
 ## Overview
 
